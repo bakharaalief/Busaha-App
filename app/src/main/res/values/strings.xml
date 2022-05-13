@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Busaha</string>
+    <string name="splash_image_desc">splash image desc</string>
+    <string name="welcome_desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. At ac in condimentum odio. Ut varius risus lobortis ullamcorper.</string>
+    <string name="register">Register</string>
+    <string name="welcome_image_desc">welcome image desc</string>
+    <string name="log_in">Login</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+</resources>
