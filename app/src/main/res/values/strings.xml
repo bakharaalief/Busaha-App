@@ -7,4 +7,9 @@
     <string name="log_in">Login</string>
     <string name="email">Email</string>
     <string name="password">Password</string>
+    <string name="setting">setting</string>
+    <string name="setting_icon">setting icon</string>
+    <string name="home">Home</string>
+    <string name="chat">Chat</string>
+    <string name="profile">Profile</string>
 </resources>
