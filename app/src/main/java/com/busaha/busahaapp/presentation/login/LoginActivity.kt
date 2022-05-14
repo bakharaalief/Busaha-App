@@ -17,16 +17,14 @@ class LoginActivity : AppCompatActivity() {
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        //set the toolbar
-        setToolbar()
+        setActionBar()
 
-        //login button
         binding.loginBtn.setOnClickListener {
             toMain()
         }
     }
 
-    private fun setToolbar() {
+    private fun setActionBar() {
         setSupportActionBar(binding.materialToolbar)
         supportActionBar?.setDisplayShowTitleEnabled(false)
     }

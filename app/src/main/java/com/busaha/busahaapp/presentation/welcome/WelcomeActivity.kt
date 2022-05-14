@@ -24,7 +24,6 @@ class WelcomeActivity : AppCompatActivity(), View.OnClickListener {
         //play animation for image in welcome
         playAnimation()
 
-        //binding button
         binding.loginBtn.setOnClickListener(this)
     }
 
