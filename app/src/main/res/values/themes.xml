@@ -68,4 +68,12 @@
         <item name="android:textSize">18sp</item>
     </style>
 
+    <style name="ActionBarTextTheme" parent="TitleTheme">
+        <item name="android:textSize">18sp</item>
+    </style>
+
+    <style name="QuizTextTheme" parent="DescriptionTheme">
+        <item name="android:textAlignment">textStart</item>
+    </style>
+
 </resources>

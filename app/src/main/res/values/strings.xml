@@ -15,4 +15,14 @@
     <string name="test_image">test image</string>
     <string name="business_test">Tes Usaha</string>
     <string name="business_trend">Tren Usaha</string>
+
+    <string name="test_quiz">Lorem ipsum dolor sit amet, consectetur adipiscing elit. At ac in condimentum odio. Ut varius risus lobortis ullamcorper. Lorem ipsum dolor sit amet, consectetur adipiscing elit. At ac in condimentum odio. Ut varius risus lobortis ullamcorper. Ut varius risus lobortis ullamcorper. Lorem ipsum dolor sit amet, consectetur adipiscing elit. At ac in condimentum odio.</string>
+    <string name="test_quiz_2">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</string>
+
+    <string name="prev">Prev</string>
+    <string name="next">Next</string>
+    <string name="confirm_image_desc">confirm image desc</string>
+    <string name="confirm_desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. At ac in condimentum odio. Ut varius risus lobortis ullamcorper.</string>
+    <string name="yes">Yes</string>
+    <string name="check_again">Check Again</string>
 </resources>

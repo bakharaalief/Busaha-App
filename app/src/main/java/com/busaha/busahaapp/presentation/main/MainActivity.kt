@@ -1,7 +1,6 @@
 package com.busaha.busahaapp.presentation.main
 
 import android.os.Bundle
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
@@ -22,15 +21,11 @@ class MainActivity : AppCompatActivity() {
 
         setActionBar()
         setBottomNav()
-
-        binding.settingBtn.setOnClickListener {
-            Toast.makeText(this, "Setting btn", Toast.LENGTH_SHORT).show()
-        }
     }
 
     private fun setActionBar() {
-        setSupportActionBar(binding.materialToolbar)
-        supportActionBar?.setDisplayShowTitleEnabled(false)
+        setSupportActionBar(binding.toolbar)
+        supportActionBar?.hide()
     }
 
     private fun setBottomNav() {
