@@ -43,7 +43,6 @@ class BusinessTestActivity : AppCompatActivity() {
 //        val mBundle = Bundle()
 //        mBundle.putInt(TestFragment.MAX_TEST, 10)
 //        mBundle.putInt(TestFragment.CURRENT_TEST, 0)
-//
 //        mTestFragment.arguments = mBundle
 
         mFragmentManager

@@ -25,4 +25,9 @@
     <string name="confirm_desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. At ac in condimentum odio. Ut varius risus lobortis ullamcorper.</string>
     <string name="yes">Yes</string>
     <string name="check_again">Check Again</string>
+
+    <string name="business_result">Bisnis Yang Cocok Untukmu</string>
+    <string name="result_image_desc">result image desc</string>
+    <string name="back_to_home">Back to Home</string>
+    <string name="result_desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. At ac in condimentum odio. Ut varius risus lobortis ullamcorper.</string>
 </resources>

@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ScrollView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.busaha.busahaapp.R
@@ -29,19 +30,37 @@ class TestFragment : Fragment(), View.OnClickListener {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        //quiz progress, number, and text
         binding.testProgress.max = maxTest
         binding.testProgress.progress = currentTest
         binding.testNumberText.text = "$currentTest".plus(" / $maxTest")
 
+        //option button
+        binding.testOptionABtn.setOnClickListener(this)
+        binding.testOptionBBtn.setOnClickListener(this)
+        binding.testOptionCBtn.setOnClickListener(this)
+        binding.testOptionDBtn.setOnClickListener(this)
+
+        //prev and next button
         binding.nextBtn.setOnClickListener(this)
         binding.prevBtn.setOnClickListener(this)
     }
 
     override fun onClick(view: View) {
         when (view.id) {
+            R.id.test_option_a_btn -> optionBtnClicked('A')
+            R.id.test_option_b_btn -> optionBtnClicked('B')
+            R.id.test_option_c_btn -> optionBtnClicked('C')
+            R.id.test_option_d_btn -> optionBtnClicked('D')
             R.id.next_btn -> toNextTest()
             R.id.prev_btn -> toPrevTest()
         }
+    }
+
+    private fun optionBtnClicked(option: Char) {
+        Toast.makeText(context, "Mencet Tombol $option", Toast.LENGTH_SHORT).show()
+        toNextTest()
+        binding.scrollview.fullScroll(ScrollView.FOCUS_UP)
     }
 
     private fun toNextTest() {
@@ -70,11 +89,6 @@ class TestFragment : Fragment(), View.OnClickListener {
     private fun toConfirmFrag() {
         val mConfirmFragment = ConfirmFragment()
         val mFragmentManager = parentFragmentManager
-
-        val mBundle = Bundle()
-        mBundle.putInt(MAX_TEST, 10)
-        mBundle.putInt(CURRENT_TEST, currentTest)
-
         mFragmentManager.beginTransaction().apply {
             replace(
                 R.id.test_fragment_container,
@@ -83,10 +97,5 @@ class TestFragment : Fragment(), View.OnClickListener {
             addToBackStack(null)
             commit()
         }
-    }
-
-    companion object {
-        const val MAX_TEST = "MAX_TEST"
-        const val CURRENT_TEST = "CURRENT_TEST"
     }
 }

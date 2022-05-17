@@ -1,13 +1,14 @@
 package com.busaha.busahaapp.presentation.business_test
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.busaha.busahaapp.R
 import com.busaha.busahaapp.databinding.FragmentConfirmBinding
+import com.busaha.busahaapp.presentation.business_result.BusinessResultActivity
 
 class ConfirmFragment : Fragment(), View.OnClickListener {
 
@@ -31,8 +32,18 @@ class ConfirmFragment : Fragment(), View.OnClickListener {
 
     override fun onClick(view: View) {
         when (view.id) {
-            R.id.yes_btn -> Toast.makeText(context, "Yes", Toast.LENGTH_SHORT).show()
-            R.id.check_btn -> Toast.makeText(context, "Check", Toast.LENGTH_SHORT).show()
+            R.id.yes_btn -> toResult()
+            R.id.check_btn -> toTestFrag()
         }
+    }
+
+    private fun toResult() {
+        val intent = Intent(context, BusinessResultActivity::class.java)
+        startActivity(intent)
+    }
+
+    private fun toTestFrag() {
+        val mFragmentManager = parentFragmentManager
+        mFragmentManager.popBackStack()
     }
 }
