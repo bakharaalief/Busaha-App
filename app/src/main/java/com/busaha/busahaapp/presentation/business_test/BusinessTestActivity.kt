@@ -36,15 +36,13 @@ class BusinessTestActivity : AppCompatActivity() {
     }
 
     private fun setFragment() {
-
         val mFragmentManager = supportFragmentManager
         val mTestFragment = TestFragment()
 
-//        val mBundle = Bundle()
-//        mBundle.putInt(TestFragment.MAX_TEST, 10)
-//        mBundle.putInt(TestFragment.CURRENT_TEST, 0)
-//        mTestFragment.arguments = mBundle
+        val mBundle = Bundle()
+        mBundle.putInt(TestFragment.MAX_TEST, 10)
 
+        mTestFragment.arguments = mBundle
         mFragmentManager
             .beginTransaction()
             .add(

@@ -14,9 +14,9 @@ class TestFragment : Fragment(), View.OnClickListener {
 
     private lateinit var binding: FragmentTestBinding
 
-    private var maxTest = 10
-    private var currentTest = 1
     private var startTest = 1
+    private var maxTest = 0
+    private var currentTest = 1
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -30,10 +30,15 @@ class TestFragment : Fragment(), View.OnClickListener {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        maxTest = arguments?.getInt(MAX_TEST, 1) ?: 1
+
         //quiz progress, number, and text
         binding.testProgress.max = maxTest
         binding.testProgress.progress = currentTest
         binding.testNumberText.text = "$currentTest".plus(" / $maxTest")
+
+        //visible prev button
+        binding.prevBtn.visibility = if (currentTest == startTest) View.GONE else View.VISIBLE
 
         //option button
         binding.testOptionABtn.setOnClickListener(this)
@@ -84,18 +89,27 @@ class TestFragment : Fragment(), View.OnClickListener {
     private fun updateTest() {
         binding.testNumberText.text = "$currentTest".plus(" / $maxTest")
         binding.testProgress.progress = currentTest
+        binding.prevBtn.visibility = if (currentTest == startTest) View.GONE else View.VISIBLE
     }
 
     private fun toConfirmFrag() {
-        val mConfirmFragment = ConfirmFragment()
         val mFragmentManager = parentFragmentManager
+        val mConfirmFragment = ConfirmFragment()
+
+        val mBundle = Bundle()
+        mBundle.putInt(MAX_TEST, maxTest)
+        mConfirmFragment.arguments = mBundle
+
         mFragmentManager.beginTransaction().apply {
             replace(
                 R.id.test_fragment_container,
                 mConfirmFragment
             )
-            addToBackStack(null)
             commit()
         }
+    }
+
+    companion object {
+        const val MAX_TEST = "max_test"
     }
 }

@@ -13,7 +13,7 @@
         android:layout_marginHorizontal="15dp"
         android:layout_marginBottom="15dp"
         android:orientation="vertical"
-        app:layout_constraintBottom_toTopOf="@+id/prev_btn"
+        app:layout_constraintBottom_toTopOf="@+id/next_btn"
         app:layout_constraintTop_toTopOf="parent">
 
         <LinearLayout
@@ -25,9 +25,9 @@
                 android:id="@+id/test_progress"
                 style="@android:style/Widget.ProgressBar.Horizontal"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="20dp"
                 android:layout_marginTop="15dp"
-                android:progressTint="@color/green_primary" />
+                android:progressDrawable="@drawable/my_progress_bar" />
 
             <TextView
                 android:id="@+id/test_number_text"
