@@ -30,4 +30,13 @@
     <string name="result_image_desc">result image desc</string>
     <string name="back_to_home">Back to Home</string>
     <string name="result_desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. At ac in condimentum odio. Ut varius risus lobortis ullamcorper.</string>
+    <string name="masukkan_deskripsi_anda">Masukkan Deskripsi Anda</string>
+    <string name="birth_date">Tanggal Lahir</string>
+    <string name="confirm_password">Confirm Password</string>
+    <string name="status">Status</string>
+    <string name="name">Name</string>
+    <string name="email_icon_description">Email Icon Description</string>
+    <string name="status_icon_description">status icon description</string>
+    <string name="desc_icon_description">desc icon description</string>
+    <string name="log_out">Logout</string>
 </resources>

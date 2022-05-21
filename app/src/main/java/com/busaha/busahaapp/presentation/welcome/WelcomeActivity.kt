@@ -8,6 +8,8 @@ import androidx.appcompat.app.AppCompatActivity
 import com.busaha.busahaapp.R
 import com.busaha.busahaapp.databinding.ActivityWelcomeBinding
 import com.busaha.busahaapp.presentation.login.LoginActivity
+import com.busaha.busahaapp.presentation.main.MainActivity
+import com.busaha.busahaapp.presentation.register.RegisterActivity
 
 class WelcomeActivity : AppCompatActivity(), View.OnClickListener {
 
@@ -25,6 +27,7 @@ class WelcomeActivity : AppCompatActivity(), View.OnClickListener {
         playAnimation()
 
         binding.loginBtn.setOnClickListener(this)
+        binding.registerBtn.setOnClickListener(this)
     }
 
     private fun playAnimation() {
@@ -38,11 +41,17 @@ class WelcomeActivity : AppCompatActivity(), View.OnClickListener {
     override fun onClick(view: View) {
         when (view.id) {
             R.id.login_btn -> toLogin()
+            R.id.register_btn -> toRegister()
         }
     }
 
     private fun toLogin() {
         val intent = Intent(this, LoginActivity::class.java)
+        startActivity(intent)
+    }
+
+    private fun toRegister() {
+        val intent = Intent(this, RegisterActivity::class.java)
         startActivity(intent)
     }
 }
