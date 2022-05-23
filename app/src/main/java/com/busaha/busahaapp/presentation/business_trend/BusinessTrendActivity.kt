@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.busaha.busahaapp.databinding.ActivityBusinessTrendBinding
+import com.busaha.busahaapp.presentation.ViewModelFactory
 
 class BusinessTrendActivity : AppCompatActivity() {
 
@@ -39,7 +40,8 @@ class BusinessTrendActivity : AppCompatActivity() {
     }
 
     private fun setViewHolder() {
-        viewModel = ViewModelProvider(this)[BusinessTrendViewModel::class.java]
+        val factory = ViewModelFactory.getInstance()
+        viewModel = ViewModelProvider(this, factory)[BusinessTrendViewModel::class.java]
     }
 
     private fun setRv() {
