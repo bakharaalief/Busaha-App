@@ -3,7 +3,7 @@ package com.busaha.busahaapp.util
 import com.busaha.busahaapp.domain.entity.Trend
 
 object DataDummy {
-    fun TrendDummy(): List<Trend> {
+    fun trendDummy(): List<Trend> {
         val result = ArrayList<Trend>()
 
         for (i in 0..10) {

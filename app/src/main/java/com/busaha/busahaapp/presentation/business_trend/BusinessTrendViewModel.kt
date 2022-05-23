@@ -12,6 +12,6 @@ class BusinessTrendViewModel : ViewModel() {
     val listTrend: LiveData<List<Trend>> = _listTrend
 
     init {
-        _listTrend.value = DataDummy.TrendDummy()
+        _listTrend.value = DataDummy.trendDummy()
     }
 }

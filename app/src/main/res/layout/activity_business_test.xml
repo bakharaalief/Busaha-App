@@ -8,6 +8,7 @@
 
     <com.google.android.material.appbar.MaterialToolbar
         android:id="@+id/toolbar"
+        style="@style/ActionBarTheme"
         android:layout_width="match_parent"
         android:layout_height="?actionBarSize"
         app:layout_constraintEnd_toEndOf="parent"
