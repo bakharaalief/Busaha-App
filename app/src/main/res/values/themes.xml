@@ -99,4 +99,12 @@
         <item name="android:textSize">20sp</item>
     </style>
 
+    <style name="TitleTrendItemTheme" parent="ResultTextItemTheme">
+        <item name="android:textSize">20sp</item>
+    </style>
+
+    <style name="DescTrendItemTheme" parent="LightBaseTheme">
+        <item name="android:textSize">20sp</item>
+    </style>
+
 </resources>

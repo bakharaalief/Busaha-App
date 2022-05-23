@@ -16,6 +16,7 @@
         <entry key="..\:/projects/android/busahaapp/app/src/main/res/drawable/myprogressbar.xml" value="0.2355" />
         <entry key="..\:/projects/android/busahaapp/app/src/main/res/layout/activity_business_result.xml" value="0.259375" />
         <entry key="..\:/projects/android/busahaapp/app/src/main/res/layout/activity_business_test.xml" value="0.264" />
+        <entry key="..\:/projects/android/busahaapp/app/src/main/res/layout/activity_business_trend.xml" value="0.25" />
         <entry key="..\:/projects/android/busahaapp/app/src/main/res/layout/activity_login.xml" value="0.259375" />
         <entry key="..\:/projects/android/busahaapp/app/src/main/res/layout/activity_main.xml" value="0.259375" />
         <entry key="..\:/projects/android/busahaapp/app/src/main/res/layout/activity_register.xml" value="0.259375" />
@@ -25,6 +26,7 @@
         <entry key="..\:/projects/android/busahaapp/app/src/main/res/layout/fragment_home.xml" value="0.25" />
         <entry key="..\:/projects/android/busahaapp/app/src/main/res/layout/fragment_profile.xml" value="0.264" />
         <entry key="..\:/projects/android/busahaapp/app/src/main/res/layout/fragment_test.xml" value="0.25" />
+        <entry key="..\:/projects/android/busahaapp/app/src/main/res/layout/item_trend.xml" value="0.259375" />
         <entry key="..\:/projects/android/busahaapp/app/src/main/res/menu/bottom_menu_main.xml" value="0.259375" />
         <entry key="..\:/projects/android/busahaapp/app/src/main/res/menu/main_option_menu.xml" value="0.259375" />
         <entry key="..\:/projects/android/busahaapp/app/src/main/res/menu/option_menu_main.xml" value="0.259375" />

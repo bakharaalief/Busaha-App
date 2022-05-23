@@ -10,6 +10,7 @@ import androidx.fragment.app.Fragment
 import com.busaha.busahaapp.R
 import com.busaha.busahaapp.databinding.FragmentHomeBinding
 import com.busaha.busahaapp.presentation.business_test.BusinessTestActivity
+import com.busaha.busahaapp.presentation.business_trend.BusinessTrendActivity
 
 class HomeFragment : Fragment(), View.OnClickListener {
 
@@ -30,18 +31,24 @@ class HomeFragment : Fragment(), View.OnClickListener {
         binding.testBtn.setOnClickListener(this)
         binding.trendBtn.setOnClickListener(this)
         binding.settingBtn.setOnClickListener(this)
+
     }
 
     override fun onClick(view: View) {
         when (view.id) {
             R.id.setting_btn -> Toast.makeText(context, "Setting btn", Toast.LENGTH_SHORT).show()
             R.id.test_btn -> toBusinessTest()
-            R.id.trend_btn -> Toast.makeText(context, "Trend Button", Toast.LENGTH_SHORT).show()
+            R.id.trend_btn -> toBusinessTrend()
         }
     }
 
     private fun toBusinessTest() {
         val intent = Intent(context, BusinessTestActivity::class.java)
+        startActivity(intent)
+    }
+
+    private fun toBusinessTrend() {
+        val intent = Intent(context, BusinessTrendActivity::class.java)
         startActivity(intent)
     }
 }
