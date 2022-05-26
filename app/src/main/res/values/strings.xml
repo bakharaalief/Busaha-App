@@ -39,4 +39,6 @@
     <string name="status_icon_description">status icon description</string>
     <string name="desc_icon_description">desc icon description</string>
     <string name="log_out">Logout</string>
+    <string name="loading">Loading</string>
+    <string name="gender">Gender</string>
 </resources>

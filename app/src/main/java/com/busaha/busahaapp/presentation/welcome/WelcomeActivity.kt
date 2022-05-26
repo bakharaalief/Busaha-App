@@ -8,7 +8,6 @@ import androidx.appcompat.app.AppCompatActivity
 import com.busaha.busahaapp.R
 import com.busaha.busahaapp.databinding.ActivityWelcomeBinding
 import com.busaha.busahaapp.presentation.login.LoginActivity
-import com.busaha.busahaapp.presentation.main.MainActivity
 import com.busaha.busahaapp.presentation.register.RegisterActivity
 
 class WelcomeActivity : AppCompatActivity(), View.OnClickListener {

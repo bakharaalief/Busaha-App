@@ -1,12 +1,18 @@
 package com.busaha.busahaapp.presentation.business_trend
 
+import android.content.Context
 import android.os.Bundle
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
+import androidx.datastore.core.DataStore
+import androidx.datastore.preferences.core.Preferences
+import androidx.datastore.preferences.preferencesDataStore
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.busaha.busahaapp.databinding.ActivityBusinessTrendBinding
 import com.busaha.busahaapp.presentation.ViewModelFactory
+
+private val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = "settings")
 
 class BusinessTrendActivity : AppCompatActivity() {
 
@@ -20,7 +26,7 @@ class BusinessTrendActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         setActionBar()
-        setViewHolder()
+        setViewModel()
         setRv()
     }
 
@@ -39,8 +45,8 @@ class BusinessTrendActivity : AppCompatActivity() {
         }
     }
 
-    private fun setViewHolder() {
-        val factory = ViewModelFactory.getInstance()
+    private fun setViewModel() {
+        val factory = ViewModelFactory.getInstance(dataStore)
         viewModel = ViewModelProvider(this, factory)[BusinessTrendViewModel::class.java]
     }
 
