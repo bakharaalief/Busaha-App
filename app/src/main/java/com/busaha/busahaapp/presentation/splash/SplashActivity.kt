@@ -6,7 +6,6 @@ import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
-import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
@@ -56,7 +55,6 @@ class SplashActivity : AppCompatActivity() {
         val factory = ViewModelFactory.getInstance(dataStore)
         viewModel = ViewModelProvider(this, factory)[SplashViewModel::class.java]
         viewModel.getUserData().observe(this) {
-            Log.d("test", it.isLogin.toString())
             isLogin = it.isLogin
             user = UserLogin(it.localId, it.displayName)
         }
