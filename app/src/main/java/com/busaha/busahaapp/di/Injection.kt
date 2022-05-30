@@ -1,14 +1,13 @@
 package com.busaha.busahaapp.di
 
+import com.busaha.busahaapp.data.TestRepository
 import com.busaha.busahaapp.data.TrendRepository
 import com.busaha.busahaapp.data.UserRepository
 import com.busaha.busahaapp.data.remote.retorift.ApiConfig
+import com.busaha.busahaapp.domain.repository.ITestRepository
 import com.busaha.busahaapp.domain.repository.ITrendRepository
 import com.busaha.busahaapp.domain.repository.IUserRepository
-import com.busaha.busahaapp.domain.use_case.TrendInteract
-import com.busaha.busahaapp.domain.use_case.TrendUseCase
-import com.busaha.busahaapp.domain.use_case.UserInteract
-import com.busaha.busahaapp.domain.use_case.UserUseCase
+import com.busaha.busahaapp.domain.use_case.*
 
 object Injection {
 
@@ -29,5 +28,15 @@ object Injection {
     fun provideUserUseCase(): UserUseCase {
         val repository = provideUserRepository()
         return UserInteract(repository)
+    }
+
+    private fun provideTestRepository(): ITestRepository {
+        val apiConfig = ApiConfig.getApiService()
+        return TestRepository(apiConfig)
+    }
+
+    fun provideTestUseCase(): TestUseCase {
+        val repository = provideTestRepository()
+        return TestInteract(repository)
     }
 }

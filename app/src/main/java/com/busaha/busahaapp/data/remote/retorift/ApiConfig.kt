@@ -8,7 +8,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 class ApiConfig{
     companion object {
-        private const val url = "http://192.168.1.11:3000/"
+        private const val url = " https://busaha-api-service-6fzh2i3qvq-et.a.run.app/"
 
         fun getApiService(): ApiService {
 

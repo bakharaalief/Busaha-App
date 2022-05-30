@@ -2,10 +2,10 @@ package com.busaha.busahaapp.data.remote.retorift
 
 import com.busaha.busahaapp.data.remote.response.LoginResponse
 import com.busaha.busahaapp.data.remote.response.RegisterResponse
+import com.busaha.busahaapp.data.remote.response.TestOptionResponse
+import com.busaha.busahaapp.data.remote.response.TestResponse
 import retrofit2.Response
-import retrofit2.http.Field
-import retrofit2.http.FormUrlEncoded
-import retrofit2.http.POST
+import retrofit2.http.*
 
 interface ApiService {
 
@@ -26,4 +26,10 @@ interface ApiService {
         @Field("gender") gender: Char,
         @Field("status") status: String
     ): Response<RegisterResponse>
+
+    @GET("test")
+    suspend fun getTest(): Response<TestResponse>
+
+    @GET("test/{questionId}")
+    suspend fun getTestOption(@Path("questionId") questionId: Int): Response<TestOptionResponse>
 }

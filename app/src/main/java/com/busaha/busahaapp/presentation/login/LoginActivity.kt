@@ -14,7 +14,6 @@ import androidx.lifecycle.ViewModelProvider
 import com.busaha.busahaapp.data.Result
 import com.busaha.busahaapp.databinding.ActivityLoginBinding
 import com.busaha.busahaapp.databinding.DialogLoadingBinding
-import com.busaha.busahaapp.domain.entity.UserLogin
 import com.busaha.busahaapp.presentation.ViewModelFactory
 import com.busaha.busahaapp.presentation.main.MainActivity
 
@@ -35,7 +34,7 @@ class LoginActivity : AppCompatActivity() {
         setViewModel()
 
         binding.loginBtn.setOnClickListener {
-            loginActionTemporary()
+            loginAction()
         }
     }
 
@@ -96,11 +95,6 @@ class LoginActivity : AppCompatActivity() {
                 }
             }
         }
-    }
-
-    private fun loginActionTemporary(){
-        viewModel.saveUser(UserLogin("12345678", "Budi"))
-        toMain()
     }
 
     private fun checkEmailError(target: CharSequence): Boolean {

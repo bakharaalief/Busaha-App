@@ -11,8 +11,11 @@ class BusinessResultActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityBusinessResultBinding
     private lateinit var classifier: Classifier
-
+    private lateinit var inputData: IntArray
+    private lateinit var labelData: Array<String>
     private lateinit var result: List<Pair<String, Float>>
+
+    private val modelTFLite = "model_busaha_new.tflite"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,15 +30,15 @@ class BusinessResultActivity : AppCompatActivity() {
     }
 
     private fun setClassifier() {
-        classifier = Classifier(assets, "model_busaha.tflite")
+        classifier = Classifier(assets, modelTFLite)
     }
 
     private fun runRecommend() {
-        val inputData = intArrayOf(
-            100000, 25000000, 1, 2, 10000000, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2
+        inputData = intArrayOf(
+            25000000, 1, 2, 0, 1, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0
         )
 
-        val labelData = arrayOf(
+        labelData = arrayOf(
             "Perternakan",
             "Toserba/Toko Kelontong",
             "Kuliner",

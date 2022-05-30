@@ -6,8 +6,10 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.busaha.busahaapp.data.user_pref.UserPreference
 import com.busaha.busahaapp.di.Injection
+import com.busaha.busahaapp.domain.use_case.TestUseCase
 import com.busaha.busahaapp.domain.use_case.TrendUseCase
 import com.busaha.busahaapp.domain.use_case.UserUseCase
+import com.busaha.busahaapp.presentation.business_test.TestViewModel
 import com.busaha.busahaapp.presentation.business_trend.BusinessTrendViewModel
 import com.busaha.busahaapp.presentation.login.LoginViewModel
 import com.busaha.busahaapp.presentation.main.ProfileViewModel
@@ -17,6 +19,7 @@ import com.busaha.busahaapp.presentation.splash.SplashViewModel
 class ViewModelFactory(
     private val userUseCase: UserUseCase,
     private val trendUseCase: TrendUseCase,
+    private val testUseCase: TestUseCase,
     private val pref: UserPreference,
 ) :
     ViewModelProvider.NewInstanceFactory() {
@@ -38,6 +41,9 @@ class ViewModelFactory(
             modelClass.isAssignableFrom(BusinessTrendViewModel::class.java) -> BusinessTrendViewModel(
                 trendUseCase
             ) as T
+            modelClass.isAssignableFrom(TestViewModel::class.java) -> TestViewModel(
+                testUseCase
+            ) as T
             else -> throw IllegalArgumentException("Unknown ViewModel class: " + modelClass.name)
         }
     }
@@ -51,6 +57,7 @@ class ViewModelFactory(
                 instance ?: ViewModelFactory(
                     Injection.provideUserUseCase(),
                     Injection.provideTrendUseCase(),
+                    Injection.provideTestUseCase(),
                     UserPreference.getInstance(pref),
                 )
             }.also { instance = it }

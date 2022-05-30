@@ -23,8 +23,7 @@ class UserRepository(
                     response.body()?.loginResult?.username!!,
                 )
                 emit(Result.Success(data))
-            }
-            else if(response.body()?.error == true){
+            } else if (response.body()?.error == true) {
                 emit(Result.Error("Email atau Password anda salah"))
             }
         } catch (e: Exception) {
