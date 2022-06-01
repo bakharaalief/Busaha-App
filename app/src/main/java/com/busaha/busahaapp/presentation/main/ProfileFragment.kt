@@ -42,7 +42,7 @@ class ProfileFragment : Fragment() {
     }
 
     private fun setViewModel() {
-        val factory = ViewModelFactory.getInstance(requireContext().dataStore)
+        val factory = ViewModelFactory.getInstance(requireContext(), requireContext().dataStore)
         viewModel = ViewModelProvider(viewModelStore, factory)[ProfileViewModel::class.java]
     }
 

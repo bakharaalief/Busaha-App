@@ -46,7 +46,7 @@ class BusinessTrendActivity : AppCompatActivity() {
     }
 
     private fun setViewModel() {
-        val factory = ViewModelFactory.getInstance(dataStore)
+        val factory = ViewModelFactory.getInstance(this, dataStore)
         viewModel = ViewModelProvider(this, factory)[BusinessTrendViewModel::class.java]
     }
 

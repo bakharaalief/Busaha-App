@@ -2,14 +2,14 @@ package com.busaha.busahaapp.data
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.liveData
+import com.busaha.busahaapp.data.local.entity.AnswerEntity
+import com.busaha.busahaapp.data.local.room.AnswerDao
 import com.busaha.busahaapp.data.remote.retorift.ApiService
-import com.busaha.busahaapp.domain.entity.Question
-import com.busaha.busahaapp.domain.entity.QuestionOption
-import com.busaha.busahaapp.domain.entity.Questions
-import com.busaha.busahaapp.domain.entity.QuestionsOption
+import com.busaha.busahaapp.domain.entity.*
 import com.busaha.busahaapp.domain.repository.ITestRepository
 
-class TestRepository(private val apiService: ApiService) : ITestRepository {
+class TestRepository(private val apiService: ApiService, private val answerDao: AnswerDao) :
+    ITestRepository {
 
     override fun getTest(): LiveData<Result<Questions>> = liveData {
         emit(Result.Loading)
@@ -57,4 +57,32 @@ class TestRepository(private val apiService: ApiService) : ITestRepository {
             emit(Result.Error(e.message.toString()))
         }
     }
+
+    override suspend fun saveTestOption(answer: Answer) {
+        answerDao.insert(
+            AnswerEntity(
+                answer.idQuestion,
+                answer.idAnswer,
+                answer.index
+            )
+        )
+    }
+
+    override fun getAllAnswerOption(): LiveData<List<AnswerEntity>> = answerDao.getAnswers()
+
+    override fun isAnswerSaved(idQuestion: Int): LiveData<Boolean> =
+        answerDao.isAnswerSaved(idQuestion)
+
+    override suspend fun updateTestOption(answer: Answer) = answerDao.update(
+        AnswerEntity(
+            answer.idQuestion,
+            answer.idAnswer,
+            answer.index
+        )
+    )
+
+    override suspend fun deleteAllAnswer() = answerDao.deleteAllRecord()
+
+    override fun getAnswerSaved(idQuestion: Int): LiveData<AnswerEntity> =
+        answerDao.getAnswerSaved(idQuestion)
 }

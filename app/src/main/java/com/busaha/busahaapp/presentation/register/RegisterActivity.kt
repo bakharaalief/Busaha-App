@@ -71,7 +71,7 @@ class RegisterActivity : AppCompatActivity(), DatePickerDialog.OnDateSetListener
     }
 
     private fun setViewModel() {
-        val factory = ViewModelFactory.getInstance(dataStore)
+        val factory = ViewModelFactory.getInstance(this, dataStore)
         viewModel = ViewModelProvider(this, factory)[RegisterViewModel::class.java]
     }
 

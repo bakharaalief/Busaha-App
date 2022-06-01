@@ -54,7 +54,7 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun setViewModel() {
-        val factory = ViewModelFactory.getInstance(dataStore)
+        val factory = ViewModelFactory.getInstance(this, dataStore)
         viewModel = ViewModelProvider(this, factory)[LoginViewModel::class.java]
     }
 

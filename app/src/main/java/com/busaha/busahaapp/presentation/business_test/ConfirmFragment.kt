@@ -14,8 +14,6 @@ class ConfirmFragment : Fragment(), View.OnClickListener {
 
     private lateinit var binding: FragmentConfirmBinding
 
-    private var maxTest = 0
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -27,8 +25,6 @@ class ConfirmFragment : Fragment(), View.OnClickListener {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        maxTest = arguments?.getInt(TestFragment.MAX_TEST, 0) ?: 0
 
         binding.yesBtn.setOnClickListener(this)
         binding.checkBtn.setOnClickListener(this)
@@ -50,10 +46,6 @@ class ConfirmFragment : Fragment(), View.OnClickListener {
     private fun toTestFrag() {
         val mFragmentManager = parentFragmentManager
         val mTestFragment = TestFragment()
-
-        val mBundle = Bundle()
-        mBundle.putInt(TestFragment.MAX_TEST, maxTest)
-        mTestFragment.arguments = mBundle
 
         mFragmentManager
             .beginTransaction()

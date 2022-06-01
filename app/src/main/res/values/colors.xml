@@ -11,4 +11,6 @@
     <color name="green_light">#84d790</color>
     <color name="green_primary">#53a562</color>
     <color name="green_dark">#1f7537</color>
+
+    <color name="yellow">#ebde34</color>
 </resources>

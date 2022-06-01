@@ -1,5 +1,6 @@
 package com.busaha.busahaapp.presentation
 
+import android.content.Context
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
 import androidx.lifecycle.ViewModel
@@ -9,6 +10,7 @@ import com.busaha.busahaapp.di.Injection
 import com.busaha.busahaapp.domain.use_case.TestUseCase
 import com.busaha.busahaapp.domain.use_case.TrendUseCase
 import com.busaha.busahaapp.domain.use_case.UserUseCase
+import com.busaha.busahaapp.presentation.business_result.BusinessResultViewModel
 import com.busaha.busahaapp.presentation.business_test.TestViewModel
 import com.busaha.busahaapp.presentation.business_trend.BusinessTrendViewModel
 import com.busaha.busahaapp.presentation.login.LoginViewModel
@@ -44,6 +46,9 @@ class ViewModelFactory(
             modelClass.isAssignableFrom(TestViewModel::class.java) -> TestViewModel(
                 testUseCase
             ) as T
+            modelClass.isAssignableFrom(BusinessResultViewModel::class.java) -> BusinessResultViewModel(
+                testUseCase
+            ) as T
             else -> throw IllegalArgumentException("Unknown ViewModel class: " + modelClass.name)
         }
     }
@@ -52,12 +57,12 @@ class ViewModelFactory(
         @Volatile
         private var instance: ViewModelFactory? = null
 
-        fun getInstance(pref: DataStore<Preferences>): ViewModelFactory =
+        fun getInstance(context: Context, pref: DataStore<Preferences>): ViewModelFactory =
             instance ?: synchronized(this) {
                 instance ?: ViewModelFactory(
                     Injection.provideUserUseCase(),
                     Injection.provideTrendUseCase(),
-                    Injection.provideTestUseCase(),
+                    Injection.provideTestUseCase(context),
                     UserPreference.getInstance(pref),
                 )
             }.also { instance = it }

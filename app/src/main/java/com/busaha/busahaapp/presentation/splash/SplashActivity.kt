@@ -52,7 +52,7 @@ class SplashActivity : AppCompatActivity() {
     }
 
     private fun setViewModel() {
-        val factory = ViewModelFactory.getInstance(dataStore)
+        val factory = ViewModelFactory.getInstance(this, dataStore)
         viewModel = ViewModelProvider(this, factory)[SplashViewModel::class.java]
         viewModel.getUserData().observe(this) {
             isLogin = it.isLogin

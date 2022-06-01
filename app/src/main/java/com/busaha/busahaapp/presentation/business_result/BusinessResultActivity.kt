@@ -1,15 +1,24 @@
 package com.busaha.busahaapp.presentation.business_result
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.datastore.core.DataStore
+import androidx.datastore.preferences.core.Preferences
+import androidx.datastore.preferences.preferencesDataStore
+import androidx.lifecycle.ViewModelProvider
 import com.busaha.busahaapp.databinding.ActivityBusinessResultBinding
 import com.busaha.busahaapp.ml.Classifier
+import com.busaha.busahaapp.presentation.ViewModelFactory
 import com.busaha.busahaapp.presentation.main.MainActivity
+
+private val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = "settings")
 
 class BusinessResultActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityBusinessResultBinding
+    private lateinit var viewModel: BusinessResultViewModel
     private lateinit var classifier: Classifier
     private lateinit var inputData: IntArray
     private lateinit var labelData: Array<String>
@@ -24,7 +33,8 @@ class BusinessResultActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         setClassifier()
-        runRecommend()
+        setLabelAndInputData()
+        setViewModel()
 
         binding.homeBtn.setOnClickListener { toMain() }
     }
@@ -33,11 +43,8 @@ class BusinessResultActivity : AppCompatActivity() {
         classifier = Classifier(assets, modelTFLite)
     }
 
-    private fun runRecommend() {
-        inputData = intArrayOf(
-            25000000, 1, 2, 0, 1, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0
-        )
-
+    private fun setLabelAndInputData() {
+        inputData = IntArray(16)
         labelData = arrayOf(
             "Perternakan",
             "Toserba/Toko Kelontong",
@@ -48,9 +55,24 @@ class BusinessResultActivity : AppCompatActivity() {
             "Pakaian",
             "Kosmetik"
         )
+    }
 
+    private fun runRecommend() {
         result = classifier.searchRecommend(inputData, labelData)
         setResultToText()
+    }
+
+    private fun setViewModel() {
+        val factory = ViewModelFactory.getInstance(this, dataStore)
+        viewModel = ViewModelProvider(viewModelStore, factory)[BusinessResultViewModel::class.java]
+
+        viewModel.getAllAnswerOption.observe(this) {
+            for (i in it.indices) {
+                inputData[i] = it[i].index ?: 0
+            }
+
+            runRecommend()
+        }
     }
 
     private fun setResultToText() {
@@ -65,6 +87,8 @@ class BusinessResultActivity : AppCompatActivity() {
     }
 
     private fun toMain() {
+        viewModel.deleteAllAnswer()
+
         val intent = Intent(this, MainActivity::class.java)
         startActivity(intent)
     }
