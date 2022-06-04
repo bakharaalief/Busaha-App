@@ -10,8 +10,12 @@ import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.preferencesDataStore
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import com.busaha.busahaapp.data.Result
+import com.busaha.busahaapp.data.remote.response.UserItem
 import com.busaha.busahaapp.databinding.FragmentProfileBinding
+import com.busaha.busahaapp.domain.entity.UserDetail
 import com.busaha.busahaapp.presentation.ViewModelFactory
 import com.busaha.busahaapp.presentation.welcome.WelcomeActivity
 
@@ -21,6 +25,8 @@ class ProfileFragment : Fragment() {
 
     private lateinit var binding: FragmentProfileBinding
     private lateinit var viewModel: ProfileViewModel
+    private lateinit var userDetail: UserDetail
+    private var id = ""
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -44,6 +50,11 @@ class ProfileFragment : Fragment() {
     private fun setViewModel() {
         val factory = ViewModelFactory.getInstance(requireContext(), requireContext().dataStore)
         viewModel = ViewModelProvider(viewModelStore, factory)[ProfileViewModel::class.java]
+
+        viewModel.getUserData().observe(viewLifecycleOwner){
+            id = it.localId
+            getUserDetail()
+        }
     }
 
     private fun toWelcome() {
@@ -51,6 +62,42 @@ class ProfileFragment : Fragment() {
         val intent = Intent(context, WelcomeActivity::class.java)
         startActivity(intent)
         requireActivity().finish()
+    }
+
+
+
+    private fun getUserDetail() {
+        viewModel.getDetailUser(id).observe(viewLifecycleOwner){result ->
+            when (result) {
+                is Result.Loading -> showLoading(true)
+                is Result.Success -> {
+                    userDetail = result.data
+                    isiData(userDetail)
+                    showLoading(false)
+                }
+                is Result.Error -> {
+                    showLoading(false)
+                }
+            }
+        }
+    }
+
+    private fun showLoading(status: Boolean){
+        if (status) {
+            binding.loadingIndicator.visibility = View.VISIBLE
+        } else {
+            binding.loadingIndicator.visibility = View.GONE
+        }
+    }
+
+    private fun isiData(data: UserDetail){
+        binding.apply {
+            tvUsername.text = data.name
+            tvUserEmail.text = data.email
+            tvUserStatus.text = data.status
+            tvDobUser.text = data.dob
+            tvGenderUser.text = data.gender.toString()
+        }
     }
 
 }

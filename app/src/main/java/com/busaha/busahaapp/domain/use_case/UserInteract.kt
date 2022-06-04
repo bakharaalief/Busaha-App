@@ -2,6 +2,7 @@ package com.busaha.busahaapp.domain.use_case
 
 import androidx.lifecycle.LiveData
 import com.busaha.busahaapp.data.Result
+import com.busaha.busahaapp.domain.entity.UserDetail
 import com.busaha.busahaapp.domain.entity.UserLogin
 import com.busaha.busahaapp.domain.entity.UserRegister
 import com.busaha.busahaapp.domain.repository.IUserRepository
@@ -21,4 +22,9 @@ class UserInteract(private val userRepository: IUserRepository) :
         status: String
     ): LiveData<Result<UserRegister>> =
         userRepository.registerUser(name, email, pass, dob, gender, status)
+
+    override fun getDetailUser(id: String): LiveData<Result<UserDetail>> =
+        userRepository.getDetailUser(id)
+
+
 }

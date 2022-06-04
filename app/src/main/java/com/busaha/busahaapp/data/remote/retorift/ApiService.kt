@@ -1,9 +1,6 @@
 package com.busaha.busahaapp.data.remote.retorift
 
-import com.busaha.busahaapp.data.remote.response.LoginResponse
-import com.busaha.busahaapp.data.remote.response.RegisterResponse
-import com.busaha.busahaapp.data.remote.response.TestOptionResponse
-import com.busaha.busahaapp.data.remote.response.TestResponse
+import com.busaha.busahaapp.data.remote.response.*
 import retrofit2.Response
 import retrofit2.http.*
 
@@ -32,4 +29,10 @@ interface ApiService {
 
     @GET("test/{questionId}")
     suspend fun getTestOption(@Path("questionId") questionId: Int): Response<TestOptionResponse>
+
+    @GET("user/{id}")
+    suspend fun detailUser(
+        @Path("id") id: String
+    ): Response<UserDetailResponse>
+
 }

@@ -38,7 +38,7 @@ class ViewModelFactory(
                 userUseCase
             ) as T
             modelClass.isAssignableFrom(ProfileViewModel::class.java) -> ProfileViewModel(
-                pref
+                userUseCase, pref
             ) as T
             modelClass.isAssignableFrom(BusinessTrendViewModel::class.java) -> BusinessTrendViewModel(
                 trendUseCase

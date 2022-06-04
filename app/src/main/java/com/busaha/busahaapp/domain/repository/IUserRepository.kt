@@ -2,6 +2,7 @@ package com.busaha.busahaapp.domain.repository
 
 import androidx.lifecycle.LiveData
 import com.busaha.busahaapp.data.Result
+import com.busaha.busahaapp.domain.entity.UserDetail
 import com.busaha.busahaapp.domain.entity.UserLogin
 import com.busaha.busahaapp.domain.entity.UserRegister
 
@@ -16,4 +17,8 @@ interface IUserRepository {
         gender: Char,
         status: String
     ): LiveData<Result<UserRegister>>
+
+    fun getDetailUser(
+        id: String
+    ): LiveData<Result<UserDetail>>
 }

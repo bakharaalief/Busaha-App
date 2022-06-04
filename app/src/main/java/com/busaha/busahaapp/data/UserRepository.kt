@@ -3,6 +3,7 @@ package com.busaha.busahaapp.data
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.liveData
 import com.busaha.busahaapp.data.remote.retorift.ApiService
+import com.busaha.busahaapp.domain.entity.UserDetail
 import com.busaha.busahaapp.domain.entity.UserLogin
 import com.busaha.busahaapp.domain.entity.UserRegister
 import com.busaha.busahaapp.domain.repository.IUserRepository
@@ -54,4 +55,31 @@ class UserRepository(
             emit(Result.Error(e.message.toString()))
         }
     }
+
+    override fun getDetailUser(
+        id: String
+    ): LiveData<Result<UserDetail>> = liveData {
+        emit(Result.Loading)
+
+        try {
+            val response = apiService.detailUser(id)
+
+            if (response.body()?.error == false) {
+                val data = UserDetail(
+                    response.body()?.user?.get(0)?.id!!,
+                    response.body()?.user?.get(0)?.username!!,
+                    response.body()?.user?.get(0)?.email!!,
+                    response.body()?.user?.get(0)?.dob!!,
+                    response.body()?.user?.get(0)?.gender!!.single(),
+                    response.body()?.user?.get(0)?.status!!
+                )
+                emit(Result.Success(data))
+            } else {
+                emit(Result.Error("ID tidak ditemukan "))
+            }
+        } catch (e: Exception) {
+            emit(Result.Error(e.message.toString()))
+        }
+    }
+
 }
