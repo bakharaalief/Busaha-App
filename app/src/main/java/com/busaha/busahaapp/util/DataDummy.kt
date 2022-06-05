@@ -1,6 +1,6 @@
 package com.busaha.busahaapp.util
 
-import com.busaha.busahaapp.domain.entity.Trend
+import com.busaha.busahaapp.domain.model.Trend
 
 object DataDummy {
     fun trendDummy(): List<Trend> {

@@ -3,9 +3,9 @@ package com.busaha.busahaapp.domain.use_case
 import androidx.lifecycle.LiveData
 import com.busaha.busahaapp.data.Result
 import com.busaha.busahaapp.data.local.entity.AnswerEntity
-import com.busaha.busahaapp.domain.entity.Answer
-import com.busaha.busahaapp.domain.entity.Questions
-import com.busaha.busahaapp.domain.entity.QuestionsOption
+import com.busaha.busahaapp.domain.model.Answer
+import com.busaha.busahaapp.domain.model.Questions
+import com.busaha.busahaapp.domain.model.QuestionsOption
 import com.busaha.busahaapp.domain.repository.ITestRepository
 
 class TestInteract(private val testRepository: ITestRepository) : TestUseCase {
@@ -29,4 +29,6 @@ class TestInteract(private val testRepository: ITestRepository) : TestUseCase {
 
     override fun getAnswerSaved(idQuestion: Int): LiveData<AnswerEntity> =
         testRepository.getAnswerSaved(idQuestion)
+
+    override fun getCountAnswer(): LiveData<Int> = testRepository.getCountAnswer()
 }

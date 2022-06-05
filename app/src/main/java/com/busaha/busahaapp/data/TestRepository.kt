@@ -5,7 +5,7 @@ import androidx.lifecycle.liveData
 import com.busaha.busahaapp.data.local.entity.AnswerEntity
 import com.busaha.busahaapp.data.local.room.AnswerDao
 import com.busaha.busahaapp.data.remote.retorift.ApiService
-import com.busaha.busahaapp.domain.entity.*
+import com.busaha.busahaapp.domain.model.*
 import com.busaha.busahaapp.domain.repository.ITestRepository
 
 class TestRepository(private val apiService: ApiService, private val answerDao: AnswerDao) :
@@ -85,4 +85,6 @@ class TestRepository(private val apiService: ApiService, private val answerDao: 
 
     override fun getAnswerSaved(idQuestion: Int): LiveData<AnswerEntity> =
         answerDao.getAnswerSaved(idQuestion)
+
+    override fun getCountAnswer(): LiveData<Int> = answerDao.getCountAnswer()
 }

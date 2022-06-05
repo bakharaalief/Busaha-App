@@ -4,7 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.busaha.busahaapp.data.user_pref.UserModel
 import com.busaha.busahaapp.data.user_pref.UserPreference
-import com.busaha.busahaapp.domain.entity.UserLogin
+import com.busaha.busahaapp.domain.model.UserLogin
 import com.busaha.busahaapp.domain.use_case.UserUseCase
 import kotlinx.coroutines.launch
 

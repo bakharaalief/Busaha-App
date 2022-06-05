@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ScrollView
+import android.widget.Toast
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.preferencesDataStore
@@ -15,10 +16,10 @@ import com.busaha.busahaapp.R
 import com.busaha.busahaapp.data.Result
 import com.busaha.busahaapp.data.local.entity.AnswerEntity
 import com.busaha.busahaapp.databinding.FragmentTestBinding
-import com.busaha.busahaapp.domain.entity.Answer
-import com.busaha.busahaapp.domain.entity.Question
-import com.busaha.busahaapp.domain.entity.QuestionOption
-import com.busaha.busahaapp.domain.entity.Questions
+import com.busaha.busahaapp.domain.model.Answer
+import com.busaha.busahaapp.domain.model.Question
+import com.busaha.busahaapp.domain.model.QuestionOption
+import com.busaha.busahaapp.domain.model.Questions
 import com.busaha.busahaapp.presentation.ViewModelFactory
 
 private val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = "settings")
@@ -35,7 +36,6 @@ class TestFragment : Fragment(), View.OnClickListener {
     private var maxTest = 0
     private var currentTest = 0
     private var answerSaved = false
-
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -70,8 +70,8 @@ class TestFragment : Fragment(), View.OnClickListener {
             R.id.test_option_c_btn -> optionBtnClicked('C')
             R.id.test_option_d_btn -> optionBtnClicked('D')
             R.id.test_option_e_btn -> optionBtnClicked('E')
-            R.id.next_btn -> toNextTest()
-            R.id.prev_btn -> toPrevTest()
+            R.id.next_btn -> nextButton()
+            R.id.prev_btn -> prevButton()
         }
     }
 
@@ -118,6 +118,13 @@ class TestFragment : Fragment(), View.OnClickListener {
         //setting prev button
         binding.prevBtn.visibility = if (currentTest == startTest) View.GONE else View.VISIBLE
 
+        //set to normal
+        answerSaved = false
+        answerData = AnswerEntity(idQuestion = 0, idAnswer = 0, index = null)
+
+        //set button color to default
+        setColorButtonToDefault()
+
         //get option
         getOption()
     }
@@ -130,13 +137,6 @@ class TestFragment : Fragment(), View.OnClickListener {
                     listTestOption = result.data.listOption
                     setOption()
                     isAnswerSaved()
-
-//                    if (answerSaved) {
-//                        getAnswerSaved()
-//                        setColorForButton()
-//                    }
-
-                    showLoading(false)
                 }
                 is Result.Error -> {
                     showLoading(false)
@@ -249,28 +249,165 @@ class TestFragment : Fragment(), View.OnClickListener {
         binding.scrollview.fullScroll(ScrollView.FOCUS_UP)
     }
 
+    private fun nextButton() {
+        if (answerSaved) {
+            toNextTest()
+        } else {
+            Toast.makeText(requireContext(), "Anda Belum Memilih Jawaban", Toast.LENGTH_SHORT)
+                .show()
+        }
+    }
+
+    private fun prevButton() {
+        toPrevTest()
+    }
+
     private fun isAnswerSaved() {
         viewModel.isAnswerSaved(listTest[currentTest].id).observe(viewLifecycleOwner) {
             answerSaved = it
+            if (answerSaved) {
+                getAnswerSaved()
+            } else {
+                showLoading(false)
+            }
         }
     }
 
     private fun getAnswerSaved() {
         viewModel.getAnswerSaved(listTest[currentTest].id).observe(viewLifecycleOwner) {
-            answerData = it
+            if (it != null) {
+                answerData = it
+                if (listTest[currentTest].id == answerData.idQuestion) setColorForButton()
+            }
         }
     }
 
     private fun setColorForButton() {
-        when (answerData.idAnswer) {
-            listTestOption[0].answerId -> {
-                binding.testOptionABtn.setTextColor(requireContext().getColor(R.color.yellow))
-                binding.testOptionBBtn.setTextColor(requireContext().getColor(R.color.white))
-                binding.testOptionCBtn.setTextColor(requireContext().getColor(R.color.white))
-                binding.testOptionDBtn.setTextColor(requireContext().getColor(R.color.white))
-                binding.testOptionEBtn.setTextColor(requireContext().getColor(R.color.white))
+        when (listTestOption.size) {
+            2 -> {
+                when (answerData.idAnswer) {
+                    listTestOption[0].answerId -> {
+                        binding.testOptionABtn.setTextColor(requireContext().getColor(R.color.yellow))
+                        binding.testOptionBBtn.setTextColor(requireContext().getColor(R.color.white))
+                        binding.testOptionCBtn.setTextColor(requireContext().getColor(R.color.white))
+                        binding.testOptionDBtn.setTextColor(requireContext().getColor(R.color.white))
+                        binding.testOptionEBtn.setTextColor(requireContext().getColor(R.color.white))
+                    }
+                    listTestOption[1].answerId -> {
+                        binding.testOptionABtn.setTextColor(requireContext().getColor(R.color.white))
+                        binding.testOptionBBtn.setTextColor(requireContext().getColor(R.color.yellow))
+                        binding.testOptionCBtn.setTextColor(requireContext().getColor(R.color.white))
+                        binding.testOptionDBtn.setTextColor(requireContext().getColor(R.color.white))
+                        binding.testOptionEBtn.setTextColor(requireContext().getColor(R.color.white))
+                    }
+                }
+            }
+            3 -> {
+                when (answerData.idAnswer) {
+                    listTestOption[0].answerId -> {
+                        binding.testOptionABtn.setTextColor(requireContext().getColor(R.color.yellow))
+                        binding.testOptionBBtn.setTextColor(requireContext().getColor(R.color.white))
+                        binding.testOptionCBtn.setTextColor(requireContext().getColor(R.color.white))
+                        binding.testOptionDBtn.setTextColor(requireContext().getColor(R.color.white))
+                        binding.testOptionEBtn.setTextColor(requireContext().getColor(R.color.white))
+                    }
+                    listTestOption[1].answerId -> {
+                        binding.testOptionABtn.setTextColor(requireContext().getColor(R.color.white))
+                        binding.testOptionBBtn.setTextColor(requireContext().getColor(R.color.yellow))
+                        binding.testOptionCBtn.setTextColor(requireContext().getColor(R.color.white))
+                        binding.testOptionDBtn.setTextColor(requireContext().getColor(R.color.white))
+                        binding.testOptionEBtn.setTextColor(requireContext().getColor(R.color.white))
+                    }
+                    listTestOption[2].answerId -> {
+                        binding.testOptionABtn.setTextColor(requireContext().getColor(R.color.white))
+                        binding.testOptionBBtn.setTextColor(requireContext().getColor(R.color.white))
+                        binding.testOptionCBtn.setTextColor(requireContext().getColor(R.color.yellow))
+                        binding.testOptionDBtn.setTextColor(requireContext().getColor(R.color.white))
+                        binding.testOptionEBtn.setTextColor(requireContext().getColor(R.color.white))
+                    }
+                }
+            }
+            4 -> {
+                when (answerData.idAnswer) {
+                    listTestOption[0].answerId -> {
+                        binding.testOptionABtn.setTextColor(requireContext().getColor(R.color.yellow))
+                        binding.testOptionBBtn.setTextColor(requireContext().getColor(R.color.white))
+                        binding.testOptionCBtn.setTextColor(requireContext().getColor(R.color.white))
+                        binding.testOptionDBtn.setTextColor(requireContext().getColor(R.color.white))
+                        binding.testOptionEBtn.setTextColor(requireContext().getColor(R.color.white))
+                    }
+                    listTestOption[1].answerId -> {
+                        binding.testOptionABtn.setTextColor(requireContext().getColor(R.color.white))
+                        binding.testOptionBBtn.setTextColor(requireContext().getColor(R.color.yellow))
+                        binding.testOptionCBtn.setTextColor(requireContext().getColor(R.color.white))
+                        binding.testOptionDBtn.setTextColor(requireContext().getColor(R.color.white))
+                        binding.testOptionEBtn.setTextColor(requireContext().getColor(R.color.white))
+                    }
+                    listTestOption[2].answerId -> {
+                        binding.testOptionABtn.setTextColor(requireContext().getColor(R.color.white))
+                        binding.testOptionBBtn.setTextColor(requireContext().getColor(R.color.white))
+                        binding.testOptionCBtn.setTextColor(requireContext().getColor(R.color.yellow))
+                        binding.testOptionDBtn.setTextColor(requireContext().getColor(R.color.white))
+                        binding.testOptionEBtn.setTextColor(requireContext().getColor(R.color.white))
+                    }
+                    listTestOption[3].answerId -> {
+                        binding.testOptionABtn.setTextColor(requireContext().getColor(R.color.white))
+                        binding.testOptionBBtn.setTextColor(requireContext().getColor(R.color.white))
+                        binding.testOptionCBtn.setTextColor(requireContext().getColor(R.color.white))
+                        binding.testOptionDBtn.setTextColor(requireContext().getColor(R.color.yellow))
+                        binding.testOptionEBtn.setTextColor(requireContext().getColor(R.color.white))
+                    }
+                }
+            }
+            5 -> {
+                when (answerData.idAnswer) {
+                    listTestOption[0].answerId -> {
+                        binding.testOptionABtn.setTextColor(requireContext().getColor(R.color.yellow))
+                        binding.testOptionBBtn.setTextColor(requireContext().getColor(R.color.white))
+                        binding.testOptionCBtn.setTextColor(requireContext().getColor(R.color.white))
+                        binding.testOptionDBtn.setTextColor(requireContext().getColor(R.color.white))
+                        binding.testOptionEBtn.setTextColor(requireContext().getColor(R.color.white))
+                    }
+                    listTestOption[1].answerId -> {
+                        binding.testOptionABtn.setTextColor(requireContext().getColor(R.color.white))
+                        binding.testOptionBBtn.setTextColor(requireContext().getColor(R.color.yellow))
+                        binding.testOptionCBtn.setTextColor(requireContext().getColor(R.color.white))
+                        binding.testOptionDBtn.setTextColor(requireContext().getColor(R.color.white))
+                        binding.testOptionEBtn.setTextColor(requireContext().getColor(R.color.white))
+                    }
+                    listTestOption[2].answerId -> {
+                        binding.testOptionABtn.setTextColor(requireContext().getColor(R.color.white))
+                        binding.testOptionBBtn.setTextColor(requireContext().getColor(R.color.white))
+                        binding.testOptionCBtn.setTextColor(requireContext().getColor(R.color.yellow))
+                        binding.testOptionDBtn.setTextColor(requireContext().getColor(R.color.white))
+                        binding.testOptionEBtn.setTextColor(requireContext().getColor(R.color.white))
+                    }
+                    listTestOption[3].answerId -> {
+                        binding.testOptionABtn.setTextColor(requireContext().getColor(R.color.white))
+                        binding.testOptionBBtn.setTextColor(requireContext().getColor(R.color.white))
+                        binding.testOptionCBtn.setTextColor(requireContext().getColor(R.color.white))
+                        binding.testOptionDBtn.setTextColor(requireContext().getColor(R.color.yellow))
+                        binding.testOptionEBtn.setTextColor(requireContext().getColor(R.color.white))
+                    }
+                    listTestOption[4].answerId -> {
+                        binding.testOptionABtn.setTextColor(requireContext().getColor(R.color.white))
+                        binding.testOptionBBtn.setTextColor(requireContext().getColor(R.color.white))
+                        binding.testOptionCBtn.setTextColor(requireContext().getColor(R.color.white))
+                        binding.testOptionDBtn.setTextColor(requireContext().getColor(R.color.white))
+                        binding.testOptionEBtn.setTextColor(requireContext().getColor(R.color.yellow))
+                    }
+                }
             }
         }
+        showLoading(false)
+    }
+
+    private fun setColorButtonToDefault() {
+        binding.testOptionABtn.setTextColor(requireContext().getColor(R.color.white))
+        binding.testOptionBBtn.setTextColor(requireContext().getColor(R.color.white))
+        binding.testOptionCBtn.setTextColor(requireContext().getColor(R.color.white))
+        binding.testOptionDBtn.setTextColor(requireContext().getColor(R.color.white))
+        binding.testOptionEBtn.setTextColor(requireContext().getColor(R.color.white))
     }
 
     private fun toNextTest() {

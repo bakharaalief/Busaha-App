@@ -6,7 +6,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.busaha.busahaapp.databinding.ItemTrendBinding
-import com.busaha.busahaapp.domain.entity.Trend
+import com.busaha.busahaapp.domain.model.Trend
 
 class TrendListAdapter : ListAdapter<Trend, TrendListAdapter.MyViewHolder>(DIFF_CALLBACK) {
 

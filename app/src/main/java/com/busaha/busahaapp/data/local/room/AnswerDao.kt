@@ -23,4 +23,7 @@ interface AnswerDao {
 
     @Query("SELECT * FROM answers WHERE idQuestion = :id")
     fun getAnswerSaved(id: Int): LiveData<AnswerEntity>
+
+    @Query("SELECT COUNT(*) FROM answers")
+    fun getCountAnswer(): LiveData<Int>
 }

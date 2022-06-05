@@ -92,4 +92,9 @@ class BusinessResultActivity : AppCompatActivity() {
         val intent = Intent(this, MainActivity::class.java)
         startActivity(intent)
     }
+
+    override fun onBackPressed() {
+        viewModel.deleteAllAnswer()
+        super.onBackPressed()
+    }
 }

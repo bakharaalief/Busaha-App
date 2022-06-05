@@ -1,4 +1,4 @@
-package com.busaha.busahaapp.domain.entity
+package com.busaha.busahaapp.domain.model
 
 data class UserDetail (
     val id: String,

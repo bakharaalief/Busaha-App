@@ -3,9 +3,9 @@ package com.busaha.busahaapp.data
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.liveData
 import com.busaha.busahaapp.data.remote.retorift.ApiService
-import com.busaha.busahaapp.domain.entity.UserDetail
-import com.busaha.busahaapp.domain.entity.UserLogin
-import com.busaha.busahaapp.domain.entity.UserRegister
+import com.busaha.busahaapp.domain.model.UserDetail
+import com.busaha.busahaapp.domain.model.UserLogin
+import com.busaha.busahaapp.domain.model.UserRegister
 import com.busaha.busahaapp.domain.repository.IUserRepository
 
 class UserRepository(
@@ -45,7 +45,7 @@ class UserRepository(
         try {
             val response = apiService.registerUser(name, email, pass, dob, gender, status)
 
-            if (response.body()?.error == "false") {
+            if (response.body()?.error == false) {
                 val data = UserRegister(response.body()?.message!!)
                 emit(Result.Success(data))
             } else {

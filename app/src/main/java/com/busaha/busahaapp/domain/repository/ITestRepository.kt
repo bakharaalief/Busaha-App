@@ -3,9 +3,9 @@ package com.busaha.busahaapp.domain.repository
 import androidx.lifecycle.LiveData
 import com.busaha.busahaapp.data.Result
 import com.busaha.busahaapp.data.local.entity.AnswerEntity
-import com.busaha.busahaapp.domain.entity.Answer
-import com.busaha.busahaapp.domain.entity.Questions
-import com.busaha.busahaapp.domain.entity.QuestionsOption
+import com.busaha.busahaapp.domain.model.Answer
+import com.busaha.busahaapp.domain.model.Questions
+import com.busaha.busahaapp.domain.model.QuestionsOption
 
 interface ITestRepository {
     fun getTest(): LiveData<Result<Questions>>
@@ -23,4 +23,6 @@ interface ITestRepository {
     suspend fun deleteAllAnswer()
 
     fun getAnswerSaved(idQuestion: Int): LiveData<AnswerEntity>
+
+    fun getCountAnswer(): LiveData<Int>
 }

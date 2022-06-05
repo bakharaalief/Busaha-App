@@ -10,125 +10,134 @@
         android:id="@+id/loading_indicator"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.505" />
-
-    <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/user_image"
-        android:layout_width="130dp"
-        android:layout_height="130dp"
-        android:layout_marginTop="30dp"
-        android:contentDescription="@string/welcome_image_desc"
-        android:src="@drawable/ic_cuate"
+        app:layout_constraintBottom_toTopOf="@+id/logout_btn"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/tv_username"
-        style="@style/DetailProfileNameTheme"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/profile_info"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="15dp"
-        android:layout_marginTop="20dp"
-        android:text="username"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/logout_btn"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/user_image" />
+        app:layout_constraintTop_toTopOf="parent">
 
-    <ImageView
-        android:id="@+id/email_icon"
-        android:layout_width="@dimen/icon_in_user_size"
-        android:layout_height="@dimen/icon_in_user_size"
-        android:layout_marginStart="15dp"
-        android:layout_marginTop="50dp"
-        android:contentDescription="@string/email_icon_description"
-        android:src="@drawable/ic_baseline_email_24"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_username" />
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/user_image"
+            android:layout_width="130dp"
+            android:layout_height="130dp"
+            android:layout_marginTop="30dp"
+            android:contentDescription="@string/welcome_image_desc"
+            android:src="@drawable/ic_cuate"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/tv_user_email"
-        style="@style/DetailProfileTextTheme"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="15dp"
-        android:layout_marginEnd="15dp"
-        android:text="email"
-        app:layout_constraintBottom_toBottomOf="@+id/email_icon"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/email_icon"
-        app:layout_constraintTop_toTopOf="@+id/email_icon" />
+        <TextView
+            android:id="@+id/tv_username"
+            style="@style/DetailProfileNameTheme"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="15dp"
+            android:layout_marginTop="20dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/user_image"
+            tools:text="username" />
 
-    <ImageView
-        android:id="@+id/status_icon"
-        android:layout_width="@dimen/icon_in_user_size"
-        android:layout_height="@dimen/icon_in_user_size"
-        android:layout_marginStart="15dp"
-        android:layout_marginTop="15dp"
-        android:contentDescription="@string/status_icon_description"
-        android:src="@drawable/ic_baseline_work_24"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/email_icon" />
+        <ImageView
+            android:id="@+id/email_icon"
+            android:layout_width="@dimen/icon_in_user_size"
+            android:layout_height="@dimen/icon_in_user_size"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="20dp"
+            android:contentDescription="@string/email_icon_description"
+            android:src="@drawable/ic_baseline_email_24"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_username" />
 
-    <TextView
-        android:id="@+id/tv_user_status"
-        style="@style/DetailProfileTextTheme"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="Pekerjaan"
-        app:layout_constraintBottom_toBottomOf="@+id/status_icon"
-        app:layout_constraintEnd_toEndOf="@+id/tv_user_email"
-        app:layout_constraintStart_toStartOf="@+id/tv_user_email"
-        app:layout_constraintTop_toTopOf="@+id/status_icon" />
+        <TextView
+            android:id="@+id/tv_user_email"
+            style="@style/DetailProfileTextTheme"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:layout_marginEnd="15dp"
+            app:layout_constraintBottom_toBottomOf="@+id/email_icon"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/email_icon"
+            app:layout_constraintTop_toTopOf="@+id/email_icon"
+            tools:text="email" />
 
-    <ImageView
-        android:id="@+id/dob_icon"
-        android:layout_width="@dimen/icon_in_user_size"
-        android:layout_height="@dimen/icon_in_user_size"
-        android:layout_marginStart="15dp"
-        android:layout_marginTop="15dp"
-        android:contentDescription="@string/desc_icon_description"
-        android:src="@drawable/ic_baseline_description_24"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/status_icon" />
+        <ImageView
+            android:id="@+id/status_icon"
+            android:layout_width="@dimen/icon_in_user_size"
+            android:layout_height="@dimen/icon_in_user_size"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="15dp"
+            android:contentDescription="@string/status_icon_description"
+            android:src="@drawable/ic_baseline_work_24"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/email_icon" />
 
-    <TextView
-        android:id="@+id/tv_dob_user"
-        style="@style/DetailProfileTextTheme"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="Tanggal lahir"
-        app:layout_constraintBottom_toBottomOf="@+id/dob_icon"
-        app:layout_constraintEnd_toEndOf="@+id/tv_user_status"
-        app:layout_constraintStart_toStartOf="@+id/tv_user_status"
-        app:layout_constraintTop_toTopOf="@+id/dob_icon"/>
+        <TextView
+            android:id="@+id/tv_user_status"
+            style="@style/DetailProfileTextTheme"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="@+id/status_icon"
+            app:layout_constraintEnd_toEndOf="@+id/tv_user_email"
+            app:layout_constraintStart_toStartOf="@+id/tv_user_email"
+            app:layout_constraintTop_toTopOf="@+id/status_icon"
+            tools:text="Pekerjaan" />
 
-    <ImageView
-        android:id="@+id/gender_icon"
-        android:layout_width="@dimen/icon_in_user_size"
-        android:layout_height="@dimen/icon_in_user_size"
-        android:layout_marginStart="15dp"
-        android:layout_marginTop="15dp"
-        android:contentDescription="@string/desc_icon_description"
-        android:src="@drawable/ic_baseline_description_24"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/dob_icon" />
+        <ImageView
+            android:id="@+id/dob_icon"
+            android:layout_width="@dimen/icon_in_user_size"
+            android:layout_height="@dimen/icon_in_user_size"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="15dp"
+            android:contentDescription="@string/desc_icon_description"
+            android:src="@drawable/ic_baseline_date_range_24"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/status_icon" />
 
-    <TextView
-        android:id="@+id/tv_gender_user"
-        style="@style/DetailProfileTextTheme"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="Jenis Kelamin"
-        app:layout_constraintBottom_toBottomOf="@+id/gender_icon"
-        app:layout_constraintEnd_toEndOf="@+id/tv_dob_user"
-        app:layout_constraintStart_toStartOf="@+id/tv_dob_user"
-        app:layout_constraintTop_toTopOf="@+id/gender_icon"/>
+        <TextView
+            android:id="@+id/tv_dob_user"
+            style="@style/DetailProfileTextTheme"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="@+id/dob_icon"
+            app:layout_constraintEnd_toEndOf="@+id/tv_user_status"
+            app:layout_constraintStart_toStartOf="@+id/tv_user_status"
+            app:layout_constraintTop_toTopOf="@+id/dob_icon"
+            tools:text="Tanggal lahir" />
 
+        <ImageView
+            android:id="@+id/gender_icon"
+            android:layout_width="@dimen/icon_in_user_size"
+            android:layout_height="@dimen/icon_in_user_size"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="15dp"
+            android:contentDescription="@string/desc_icon_description"
+            android:src="@drawable/ic_baseline_person_24"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/dob_icon" />
+
+        <TextView
+            android:id="@+id/tv_gender_user"
+            style="@style/DetailProfileTextTheme"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="@+id/gender_icon"
+            app:layout_constraintEnd_toEndOf="@+id/tv_dob_user"
+            app:layout_constraintStart_toStartOf="@+id/tv_dob_user"
+            app:layout_constraintTop_toTopOf="@+id/gender_icon"
+            tools:text="Jenis Kelamin" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/logout_btn"
@@ -136,11 +145,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="15dp"
-        android:layout_marginTop="50dp"
+        android:layout_marginBottom="50dp"
         android:text="@string/log_out"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/gender_icon"
         tools:ignore="DuplicateSpeakableTextCheck" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

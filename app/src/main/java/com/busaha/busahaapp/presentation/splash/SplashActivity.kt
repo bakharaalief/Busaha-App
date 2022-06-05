@@ -12,7 +12,7 @@ import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.preferencesDataStore
 import androidx.lifecycle.ViewModelProvider
 import com.busaha.busahaapp.R
-import com.busaha.busahaapp.domain.entity.UserLogin
+import com.busaha.busahaapp.domain.model.UserLogin
 import com.busaha.busahaapp.presentation.ViewModelFactory
 import com.busaha.busahaapp.presentation.main.MainActivity
 import com.busaha.busahaapp.presentation.welcome.WelcomeActivity

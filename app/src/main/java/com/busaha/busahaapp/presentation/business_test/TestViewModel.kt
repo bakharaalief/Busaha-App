@@ -2,7 +2,7 @@ package com.busaha.busahaapp.presentation.business_test
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.busaha.busahaapp.domain.entity.Answer
+import com.busaha.busahaapp.domain.model.Answer
 import com.busaha.busahaapp.domain.use_case.TestUseCase
 import kotlinx.coroutines.launch
 
@@ -27,4 +27,12 @@ class TestViewModel(private val testUseCase: TestUseCase) : ViewModel() {
     }
 
     fun getAnswerSaved(idQuestion: Int) = testUseCase.getAnswerSaved(idQuestion)
+
+    fun deleteAllAnswer() {
+        viewModelScope.launch {
+            testUseCase.deleteAllAnswer()
+        }
+    }
+
+    fun getCountAnswer() = testUseCase.getCountAnswer()
 }
