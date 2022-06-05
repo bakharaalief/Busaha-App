@@ -54,7 +54,7 @@ class ProfileFragment : Fragment() {
 
         viewModel.getUserData().observe(viewLifecycleOwner) {
             id = it.localId
-            getUserDetail()
+            if(it.isLogin) getUserDetail()
         }
     }
 
@@ -63,9 +63,7 @@ class ProfileFragment : Fragment() {
         val intent = Intent(context, WelcomeActivity::class.java)
         intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
         startActivity(intent)
-        requireActivity().finish()
     }
-
 
     private fun getUserDetail() {
         viewModel.getDetailUser(id).observe(viewLifecycleOwner) { result ->
