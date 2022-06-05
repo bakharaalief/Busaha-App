@@ -88,6 +88,7 @@ class TestFragment : Fragment(), View.OnClickListener {
                 }
                 is Result.Error -> {
                     showLoading(false)
+                    Toast.makeText(requireContext(), result.error, Toast.LENGTH_SHORT).show()
                 }
             }
         }

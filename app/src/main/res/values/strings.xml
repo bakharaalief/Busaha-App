@@ -1,44 +1,92 @@
 <resources>
     <string name="app_name">Busaha</string>
-    <string name="splash_image_desc">splash image desc</string>
-    <string name="welcome_desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. At ac in condimentum odio. Ut varius risus lobortis ullamcorper.</string>
-    <string name="register">Register</string>
-    <string name="welcome_image_desc">welcome image desc</string>
-    <string name="log_in">Login</string>
+
+    <!--    splash layout -->
+    <string name="splash_image_description">splash image desc</string>
+
+    <!--    welcome layout-->
+    <string name="welcome_image_description">welcome image desc</string>
+    <string name="welcome_description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. At ac in condimentum odio. Ut varius risus lobortis ullamcorper.</string>
+
+    <!--    register layout-->
     <string name="email">Email</string>
+    <string name="name">Name</string>
+    <string name="register">Register</string>
+    <string name="gender">Gender</string>
+    <string name="status">Status</string>
+    <string name="birth_date">Tanggal Lahir</string>
     <string name="password">Password</string>
+    <string name="confirm_password">Confirm Password</string>
+
+    <string name="empty_email">Email kosong</string>
+    <string name="not_email">Maaf ini bukan email</string>
+    <string name="empty_name">Nama kosong</string>
+    <string name="empty_gender">Gender kosong</string>
+    <string name="empty_status">Status kosong</string>
+    <string name="empty_birth">Tanggal lahir kosong</string>
+    <string name="empty_pass">Password kosong</string>
+    <string name="pass_less_than_six">Password kurang dari 6 digit</string>
+    <string name="empty_confirm_pass">Password konfirmasi kosong</string>
+    <string name="confirm_pass_less_than_six">Password konfirmasi kurang dari 6 digit</string>
+    <string name="confirm_pass_not_match">Password konfirmasi tidak sesuai password</string>
+
+    <string name="success_create_account">User berhasil dibuat silahkan login</string>
+    <string name="failed_create_account">Register Gagal</string>
+
+    <!--    login layout-->
+    <string name="log_in">Login</string>
+    <string name="failed_login">Login Gagal</string>
+
+    <!--    home layout-->
+    <string name="setting_icon_description">setting icon</string>
     <string name="setting">setting</string>
-    <string name="setting_icon">setting icon</string>
+
+    <string name="test_icon_description">test image</string>
+    <string name="trend_icon_description">trend image</string>
+    <string name="news_image_description">news image</string>
+    <string name="history_image_description">history image</string>
+    <string name="course_image_description">course image</string>
+    <string name="shop_image_description">shop image</string>
+
+    <string name="business_test">Tes</string>
+    <string name="business_trend">Tren</string>
+    <string name="business_news">Berita</string>
+    <string name="business_history">Riwayat</string>
+    <string name="business_course">Pelatihan</string>
+    <string name="business_shop">Toko</string>
+
     <string name="home">Home</string>
     <string name="chat">Chat</string>
     <string name="profile">Profile</string>
-    <string name="test_image">test image</string>
-    <string name="business_test">Tes Usaha</string>
-    <string name="business_trend">Tren Usaha</string>
 
-    <string name="test_quiz">Lorem ipsum dolor sit amet, consectetur adipiscing elit. At ac in condimentum odio. Ut varius risus lobortis ullamcorper. Lorem ipsum dolor sit amet, consectetur adipiscing elit. At ac in condimentum odio. Ut varius risus lobortis ullamcorper. Ut varius risus lobortis ullamcorper. Lorem ipsum dolor sit amet, consectetur adipiscing elit. At ac in condimentum odio.</string>
-    <string name="test_quiz_2">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</string>
+    <!--    profile layout-->
+    <string name="profile_image_description">profile image description</string>
 
+    <string name="email_icon_description">email icon</string>
+    <string name="status_icon_description">status icon</string>
+    <string name="desc_icon_description">desc icon</string>
+    <string name="date_icon_description">date icon</string>
+    <string name="gender_icon_description">gender icon</string>
+
+    <string name="log_out">Logout</string>
+
+    <!--    test layout-->
     <string name="prev">Prev</string>
     <string name="next">Next</string>
-    <string name="confirm_image_desc">confirm image desc</string>
-    <string name="confirm_desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. At ac in condimentum odio. Ut varius risus lobortis ullamcorper.</string>
-    <string name="yes">Yes</string>
-    <string name="check_again">Check Again</string>
 
+    <!--    confirm layout-->
+    <string name="confirm_image_description">confirm image</string>
+    <string name="confirm_description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. At ac in condimentum odio. Ut varius risus lobortis ullamcorper.</string>
+    <string name="yes">Iya</string>
+    <string name="check_again">Cek Lagi</string>
+
+    <!--    result layout-->
     <string name="business_result">Bisnis Yang Cocok Untukmu</string>
-    <string name="result_image_desc">result image desc</string>
-    <string name="back_to_home">Back to Home</string>
+    <string name="result_image_description">result image desc</string>
+    <string name="back_to_home">Kembali ke Home</string>
     <string name="result_desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. At ac in condimentum odio. Ut varius risus lobortis ullamcorper.</string>
-    <string name="masukkan_deskripsi_anda">Masukkan Deskripsi Anda</string>
-    <string name="birth_date">Tanggal Lahir</string>
-    <string name="confirm_password">Confirm Password</string>
-    <string name="status">Status</string>
-    <string name="name">Name</string>
-    <string name="email_icon_description">Email Icon Description</string>
-    <string name="status_icon_description">status icon description</string>
-    <string name="desc_icon_description">desc icon description</string>
-    <string name="log_out">Logout</string>
+
+    <!--    loading dialog-->
     <string name="loading">Loading</string>
-    <string name="gender">Gender</string>
+
 </resources>

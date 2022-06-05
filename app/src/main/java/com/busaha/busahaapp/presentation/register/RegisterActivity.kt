@@ -7,7 +7,6 @@ import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextUtils
-import android.util.Log
 import android.view.MenuItem
 import android.widget.ArrayAdapter
 import android.widget.AutoCompleteTextView
@@ -131,18 +130,21 @@ class RegisterActivity : AppCompatActivity(), DatePickerDialog.OnDateSetListener
         val conPassword = conPasswordEditText.editText?.text.toString()
 
         when {
-            email.isEmpty() -> emailEditText.error = "Email Kosong"
-            !checkEmailError(email) -> emailEditText.error = "Maaf ini bukan email"
-            name.isEmpty() -> nameEditText.error = "Nama Kosong"
-            gender.isEmpty() -> genderEditText.error = "Gender Kosong"
-            status.isEmpty() -> statusEditText.error = "Status Kosong"
-            dob.isEmpty() -> dobEditText.error = "Tanggal lahir Kosong"
-            password.isEmpty() -> passwordEditText.error = "Pass kosong"
-            password.length < 6 -> passwordEditText.error = "Pass kurang dari 6"
-            conPassword.isEmpty() -> conPasswordEditText.error = "Confirm password kosong"
-            conPassword.length < 6 -> conPasswordEditText.error = "Confirm password kurang dari 6"
+            email.isEmpty() -> emailEditText.error = resources.getString(R.string.empty_email)
+            !checkEmailError(email) -> emailEditText.error = resources.getString(R.string.not_email)
+            name.isEmpty() -> nameEditText.error = resources.getString(R.string.empty_name)
+            gender.isEmpty() -> genderEditText.error = resources.getString(R.string.empty_gender)
+            status.isEmpty() -> statusEditText.error = resources.getString(R.string.empty_status)
+            dob.isEmpty() -> dobEditText.error = resources.getString(R.string.empty_birth)
+            password.isEmpty() -> passwordEditText.error = resources.getString(R.string.empty_pass)
+            password.length < 6 -> passwordEditText.error =
+                resources.getString(R.string.pass_less_than_six)
+            conPassword.isEmpty() -> conPasswordEditText.error =
+                resources.getString(R.string.empty_confirm_pass)
+            conPassword.length < 6 -> conPasswordEditText.error =
+                resources.getString(R.string.confirm_pass_less_than_six)
             password != conPassword -> conPasswordEditText.error =
-                "Confirm password tidak sesuai dengan password"
+                resources.getString(R.string.confirm_pass_not_match)
             else -> {
                 //loading dialog
                 val customBind = DialogLoadingBinding.inflate(layoutInflater)
@@ -152,8 +154,6 @@ class RegisterActivity : AppCompatActivity(), DatePickerDialog.OnDateSetListener
                 }
                 val loadingDialog = loadingDialogBuilder.create()
 
-                Log.d("test", password)
-
                 viewModel.registerUser(name, email, password, dob, genderValue, status)
                     .observe(this) { result ->
                         when (result) {
@@ -162,7 +162,7 @@ class RegisterActivity : AppCompatActivity(), DatePickerDialog.OnDateSetListener
                                 loadingDialog.dismiss()
                                 Toast.makeText(
                                     this,
-                                    "User Berhasil Dibuat Silahkan Login",
+                                    resources.getString(R.string.success_create_account),
                                     Toast.LENGTH_SHORT
                                 )
                                     .show()
@@ -186,7 +186,7 @@ class RegisterActivity : AppCompatActivity(), DatePickerDialog.OnDateSetListener
 
     private fun errorAlert(message: String) {
         AlertDialog.Builder(this).apply {
-            setTitle("Register Gagal")
+            setTitle(resources.getString(R.string.failed_create_account))
             setMessage(message)
             create()
             show()

@@ -11,6 +11,7 @@ import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.preferencesDataStore
 import androidx.lifecycle.ViewModelProvider
+import com.busaha.busahaapp.R
 import com.busaha.busahaapp.data.Result
 import com.busaha.busahaapp.databinding.ActivityLoginBinding
 import com.busaha.busahaapp.databinding.DialogLoadingBinding
@@ -66,10 +67,11 @@ class LoginActivity : AppCompatActivity() {
         val password = passwordEditText.editText?.text.toString()
 
         when {
-            email.isEmpty() -> emailEditText.error = "Email kosong"
-            !checkEmailError(email) -> emailEditText.error = "Maaf ini bukan email"
-            password.isEmpty() -> passwordEditText.error = "Pass kosong"
-            password.length < 6 -> passwordEditText.error = "Pass kurang dari 6"
+            email.isEmpty() -> emailEditText.error = resources.getString(R.string.empty_email)
+            !checkEmailError(email) -> emailEditText.error = resources.getString(R.string.not_email)
+            password.isEmpty() -> passwordEditText.error = resources.getString(R.string.empty_pass)
+            password.length < 6 -> passwordEditText.error =
+                resources.getString(R.string.pass_less_than_six)
             else -> {
                 //loading dialog
                 val customBind = DialogLoadingBinding.inflate(layoutInflater)
@@ -105,7 +107,7 @@ class LoginActivity : AppCompatActivity() {
 
     private fun errorAlert(message: String) {
         AlertDialog.Builder(this).apply {
-            setTitle("Login Gagal")
+            setTitle(resources.getString(R.string.failed_login))
             setMessage(message)
             create()
             show()

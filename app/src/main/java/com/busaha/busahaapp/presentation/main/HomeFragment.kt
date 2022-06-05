@@ -28,10 +28,13 @@ class HomeFragment : Fragment(), View.OnClickListener {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        binding.settingBtn.setOnClickListener(this)
         binding.testBtn.setOnClickListener(this)
         binding.trendBtn.setOnClickListener(this)
-        binding.settingBtn.setOnClickListener(this)
-
+        binding.newsBtn.setOnClickListener(this)
+        binding.historyBtn.setOnClickListener(this)
+        binding.courseBtn.setOnClickListener(this)
+        binding.shopBtn.setOnClickListener(this)
     }
 
     override fun onClick(view: View) {
@@ -39,6 +42,10 @@ class HomeFragment : Fragment(), View.OnClickListener {
             R.id.setting_btn -> Toast.makeText(context, "Setting btn", Toast.LENGTH_SHORT).show()
             R.id.test_btn -> toBusinessTest()
             R.id.trend_btn -> toBusinessTrend()
+            R.id.news_btn -> comingSoon()
+            R.id.history_btn -> comingSoon()
+            R.id.course_btn -> comingSoon()
+            R.id.shop_btn -> comingSoon()
         }
     }
 
@@ -50,5 +57,9 @@ class HomeFragment : Fragment(), View.OnClickListener {
     private fun toBusinessTrend() {
         val intent = Intent(context, BusinessTrendActivity::class.java)
         startActivity(intent)
+    }
+
+    private fun comingSoon() {
+        Toast.makeText(requireContext(), "Coming Soon", Toast.LENGTH_SHORT).show()
     }
 }

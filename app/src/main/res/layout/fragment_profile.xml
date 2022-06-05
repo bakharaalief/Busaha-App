@@ -29,7 +29,7 @@
             android:layout_width="130dp"
             android:layout_height="130dp"
             android:layout_marginTop="30dp"
-            android:contentDescription="@string/welcome_image_desc"
+            android:contentDescription="@string/profile_image_description"
             android:src="@drawable/ic_cuate"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -99,7 +99,7 @@
             android:layout_height="@dimen/icon_in_user_size"
             android:layout_marginStart="15dp"
             android:layout_marginTop="15dp"
-            android:contentDescription="@string/desc_icon_description"
+            android:contentDescription="@string/date_icon_description"
             android:src="@drawable/ic_baseline_date_range_24"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/status_icon" />
@@ -121,7 +121,7 @@
             android:layout_height="@dimen/icon_in_user_size"
             android:layout_marginStart="15dp"
             android:layout_marginTop="15dp"
-            android:contentDescription="@string/desc_icon_description"
+            android:contentDescription="@string/gender_icon_description"
             android:src="@drawable/ic_baseline_person_24"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/dob_icon" />

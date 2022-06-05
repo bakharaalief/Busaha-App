@@ -53,7 +53,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
-                android:text="@string/test_quiz" />
+                tools:text="Ini soal yang nanti dimasukkan" />
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/test_option_a_btn"
