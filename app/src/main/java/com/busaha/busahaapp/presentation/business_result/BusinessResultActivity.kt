@@ -84,6 +84,9 @@ class BusinessResultActivity : AppCompatActivity() {
 
         binding.result3Text.text = result[2].first
         binding.result3Percent.text = "#3"
+
+        if (result[0].first == labelData[5]) binding.resultDesc.text =
+            "Hasil menunjukan berdasarkan jawaban yang telah kamu berikan, Kamu cocok untuk membuka bisnis dibidang elektronik."
     }
 
     private fun toMain() {

@@ -6,7 +6,7 @@
 
     <!--    welcome layout-->
     <string name="welcome_image_description">welcome image desc</string>
-    <string name="welcome_description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. At ac in condimentum odio. Ut varius risus lobortis ullamcorper.</string>
+    <string name="welcome_description">Busaha adalah aplikasi yang memudahkan kamu untuk membuka dan mengatur usaha berdasarkan karakteristik kamu</string>
 
     <!--    register layout-->
     <string name="email">Email</string>
@@ -76,7 +76,7 @@
 
     <!--    confirm layout-->
     <string name="confirm_image_description">confirm image</string>
-    <string name="confirm_description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. At ac in condimentum odio. Ut varius risus lobortis ullamcorper.</string>
+    <string name="confirm_description">Apakah kamu yakin dengan jawaban yang dimasukkan ? Isilah dengan sebenar - benarnya agar hasil jauh lebih akurat dan maksimal</string>
     <string name="yes">Iya</string>
     <string name="check_again">Cek Lagi</string>
 
