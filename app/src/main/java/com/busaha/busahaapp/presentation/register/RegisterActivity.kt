@@ -195,7 +195,7 @@ class RegisterActivity : AppCompatActivity(), DatePickerDialog.OnDateSetListener
 
     @SuppressLint("SimpleDateFormat")
     private fun toDateString(date: Date): Editable {
-        val d = SimpleDateFormat("dd-MM-yyyy")
+        val d = SimpleDateFormat("yyyy-dd-MM")
         return Editable.Factory.getInstance().newEditable(d.format(date))
     }
 

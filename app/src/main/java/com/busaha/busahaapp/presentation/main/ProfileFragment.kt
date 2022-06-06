@@ -104,7 +104,7 @@ class ProfileFragment : Fragment() {
     @SuppressLint("SimpleDateFormat")
     private fun stringToDate(date: String): String {
         val inputFormatter = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'")
-        val outputFormatter = SimpleDateFormat("dd-MM-yyyy")
+        val outputFormatter = SimpleDateFormat("yyyy-dd-MM")
         val d = inputFormatter.parse(date)
         return outputFormatter.format(d!!)
     }

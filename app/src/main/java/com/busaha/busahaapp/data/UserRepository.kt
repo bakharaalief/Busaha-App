@@ -1,5 +1,6 @@
 package com.busaha.busahaapp.data
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.liveData
 import com.busaha.busahaapp.data.remote.retorift.ApiService
