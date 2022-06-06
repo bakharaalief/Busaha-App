@@ -29,14 +29,15 @@
             android:exported="false" />
         <activity
             android:name=".presentation.main.MainActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:launchMode="singleTask" />
         <activity
             android:name=".presentation.login.LoginActivity"
             android:exported="false" />
         <activity
             android:name=".presentation.welcome.WelcomeActivity"
-            android:launchMode="singleTask"
-            android:exported="false" />
+            android:exported="false"
+            android:launchMode="singleTask" />
         <activity
             android:name=".presentation.splash.SplashActivity"
             android:exported="true">
