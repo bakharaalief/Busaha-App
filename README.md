@@ -3,6 +3,7 @@ Busaha is an application that makes it easy for you to open and manage a busines
 This app we build together with cloud and machine learning paths.
 
 ## Feature
+- Login and Register
 - Tes
 - Trend 
 - Berita ( coming soon )
