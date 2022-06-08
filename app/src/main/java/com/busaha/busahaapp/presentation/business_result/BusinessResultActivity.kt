@@ -22,6 +22,7 @@ class BusinessResultActivity : AppCompatActivity() {
     private lateinit var classifier: Classifier
     private lateinit var inputData: IntArray
     private lateinit var labelData: Array<String>
+    private lateinit var descData: Array<String>
     private lateinit var result: List<Pair<String, Float>>
 
     private val modelTFLite = "model_busaha_new.tflite"
@@ -55,6 +56,16 @@ class BusinessResultActivity : AppCompatActivity() {
             "Pakaian",
             "Kosmetik"
         )
+        descData = arrayOf(
+            "Peternakan merupakan jenis usaha yang berfokus pada budidaya ternak dan menghasilkan bahan pangan.",
+            "Toserba merupakan toko yang berisikan berbagai macam kebutuhan pokok, seperti sembako dan lain sebagainya.",
+            "Kuliner Merupakan jenis usaha yang bergerak di bidang makanan. Usaha ini  tergolong memiliki modal kecil, fleksibel, mudah untuk dijalankan.",
+            "Dropship adalah Teknik marketing dimana penjual tidak perlu menyimpan barang, dan penjual akan meneruskan pesanan  kepada produsen.",
+            "Usaha barang digital memanfaatkan kecanggihan teknologi digital untuk menciptakan atau memasarkan suatu produk. Produk dapat berupa software dan semacamnya.",
+            "Hasil menunjukan berdasarkan jawaban yang telah kamu berikan, Kamu cocok untuk membuka bisnis dibidang elektronik.",
+            "Bisnis pakaian tidak akan mati karena pakaian merupakan salah satu kebutuhan primer yang dibutuhkan manusia.",
+            "Bisnis kosmetik memiliki omset yang menjanjikan, hal ini dikarenakan antusias masyarakat tidak akan habis."
+        )
     }
 
     private fun runRecommend() {
@@ -85,8 +96,17 @@ class BusinessResultActivity : AppCompatActivity() {
         binding.result3Text.text = result[2].first
         binding.result3Percent.text = "#3"
 
-        if (result[0].first == labelData[5]) binding.resultDesc.text =
-            "Hasil menunjukan berdasarkan jawaban yang telah kamu berikan, Kamu cocok untuk membuka bisnis dibidang elektronik."
+         binding.resultDesc.text = when(result[0].first){
+             labelData[0] -> descData[0]
+             labelData[1] -> descData[1]
+             labelData[2] -> descData[2]
+             labelData[3] -> descData[3]
+             labelData[4] -> descData[4]
+             labelData[5] -> descData[5]
+             labelData[6] -> descData[6]
+             labelData[7] -> descData[7]
+             else -> "Not Found"
+         }
     }
 
     private fun toMain() {
