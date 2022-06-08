@@ -96,17 +96,17 @@ class BusinessResultActivity : AppCompatActivity() {
         binding.result3Text.text = result[2].first
         binding.result3Percent.text = "#3"
 
-         binding.resultDesc.text = when(result[0].first){
-             labelData[0] -> descData[0]
-             labelData[1] -> descData[1]
-             labelData[2] -> descData[2]
-             labelData[3] -> descData[3]
-             labelData[4] -> descData[4]
-             labelData[5] -> descData[5]
-             labelData[6] -> descData[6]
-             labelData[7] -> descData[7]
-             else -> "Not Found"
-         }
+        binding.resultDesc.text = when (result[0].first) {
+            labelData[0] -> descData[0]
+            labelData[1] -> descData[1]
+            labelData[2] -> descData[2]
+            labelData[3] -> descData[3]
+            labelData[4] -> descData[4]
+            labelData[5] -> descData[5]
+            labelData[6] -> descData[6]
+            labelData[7] -> descData[7]
+            else -> "Not Found"
+        }
     }
 
     private fun toMain() {
