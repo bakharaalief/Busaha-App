@@ -12,7 +12,7 @@ This app we build together with cloud and machine learning paths.
 - Toko ( coming soon )
 
 ## Explaining main feature
-the main feature in this app is Tes Usaha or Tes. The user is asked to enter an answer based on the questions that have been provided. after that the answer will be processed by machine learning which will later provide recommendations for the top three businesses that are suitable for users
+The main feature in this app is Tes Usaha or Tes. The user is asked to enter an answer based on the questions that have been provided by the cloud. after that the answer will be processed by machine learning which will later provide recommendations for the top three businesses that are suitable for users.
 
 ## What we use in this app
 - Clean Architecture
