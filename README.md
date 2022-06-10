@@ -22,6 +22,11 @@ The main feature in this app is Tes Usaha or Tes. The user is asked to enter an 
 - Datastore Preference
 - Tenserflow Lite
 
+## how to use this app
+- Clone the project from this repo
+- Wait configuration in android studio
+- You can use the App :)
+
 ## Preview in Video
 - [Youtube](https://youtu.be/R-PcNHJpE7k)
 
